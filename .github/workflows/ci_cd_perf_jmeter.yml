@@ -32,12 +32,6 @@ jobs:
     
       - name: Lancement de l'application
         run: yarn start &
-
-    #   - name: Attente démarrage du serveur
-    #     uses: WyriHaximus/github-action-wait-for@v2
-    #     with:
-    #       target: http://localhost:3001
-    #       timeout: 60s
     
       - name: Configuration de Java
         uses: actions/setup-java@v4
@@ -52,6 +46,6 @@ jobs:
             echo "JMETER_HOME=$(pwd)/apache-jmeter-5.6.3" > $GITHUB_ENV
 
       - name: Exécution des tests avec JMeter
-        run: $JMETER_HOME/bin/jmeter -n -t tests/performance.jmx -l results.jtl
+        run: $JMETER_HOME/bin/jmeter -n -t PerformanceTestPlanMemoryThread.jmx -l results.jtl
 
             
