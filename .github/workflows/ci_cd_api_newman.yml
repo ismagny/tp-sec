@@ -30,12 +30,21 @@ jobs:
 
       - name: Linting
         run: yarn lint
+
+      - name: Lancement de l'application
+        run: yarn start &
+      
+      - name: Attente démarrage du serveur
+        uses: WyriHaximus/github-action-wait-for@v2
+        with:
+          target: http://localhost:3000
+          timeout: 60s
         
       - name: Install Newman
         run: npm install -g newman
 
       - name: Run Postman Collection
-        run: newman run path/to/your/collection.json -reporters cli,json -reporter-json-export results.json
+        run: newman run rwa-api-collection.json -reporters cli,json -reporter-json-export results.json
 
       - name: Upload Resultats
         uses: actions/upload-artifact@v4

@@ -31,10 +31,19 @@ jobs:
       - name: Linting
         run: yarn lint
 
+      - name: Lancement de l'application
+        run: yarn start &
+        
+      - name: Attente démarrage du serveur
+        uses: WyriHaximus/github-action-wait-for@v2
+        with:
+          target: http://localhost:3000
+          timeout: 60s
+
       - name: Scan de sécurité ZAP
         uses: zaproxy/action-baseline@v0.15.0
         with:
-            target: "https: /example.com"
+            target: "http://localhost:3000"
 
       - name: Upload Report
         uses: actions/upload-artifact@v4
