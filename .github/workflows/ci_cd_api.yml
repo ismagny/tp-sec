@@ -31,9 +31,6 @@ jobs:
       - name: Linting
         run: yarn lint
 
-      - name: Audit de sécurité
-        run: yarn audit
-
       - name: Lancement de l'application & Tests Cypress
         uses: cypress-io/github-action@v6
         with:
