@@ -37,14 +37,14 @@ jobs:
             distribution: 'temurin'
             java-version: '21'
 
-      - name: Lancement de l'application
-        run: yarn start &
+    #   - name: Lancement de l'application
+    #     run: yarn start &
 
-      - name: Attendre lancement du serveur
-        uses: ietf-tools/wait-on@v1
-        with:
-            resources: http://localhost:3001
-            timeout: 60000
+    #   - name: Attendre lancement du serveur
+    #     uses: ietf-tools/wait-on@v1
+    #     with:
+    #         resources: http://localhost:3001
+    #         timeout: 60000
 
       - name: Exécution des tests avec JMeter
         uses: flood-io/action-jmeter@v1

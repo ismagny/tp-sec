@@ -34,11 +34,11 @@ jobs:
       - name: Lancement de l'application
         run: yarn start &
 
-      - name: Attendre lancement du serveur
-        uses: ietf-tools/wait-on@v1
-        with:
-            resources: http://localhost:3000
-            timeout: 60000
+    #   - name: Attendre lancement du serveur
+    #     uses: ietf-tools/wait-on@v1
+    #     with:
+    #         resources: http://localhost:3000
+    #         timeout: 60000
 
       - name: Scan de sécurité ZAP
         uses: zaproxy/action-baseline@v0.12.0
