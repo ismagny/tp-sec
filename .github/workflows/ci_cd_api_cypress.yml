@@ -1,4 +1,4 @@
-name: CI/CD Cypress Real World APP
+name:  Tests d'API avec Cypress
 
 on:
   push:

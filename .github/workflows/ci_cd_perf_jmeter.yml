@@ -1,5 +1,4 @@
-name: CI/CD Cypress Real World APP
-
+name: Tests de performance avec JMeter
 on:
   push:
     branches:
@@ -37,18 +36,13 @@ jobs:
             distribution: 'temurin'
             java-version: '21'
 
-    #   - name: Lancement de l'application
-    #     run: yarn start &
-
-    #   - name: Attendre lancement du serveur
-    #     uses: ietf-tools/wait-on@v1
-    #     with:
-    #         resources: http://localhost:3001
-    #         timeout: 60000
+      - name: Installation de JMeter
+        run: |
+            wget https: /dlcdn.apache.org/jmeter/binaries/apache-jmeter-5.6.3.tgz
+            tar -xzf apache-jmeter-5.6.3.tgz
+            echo "JMETER_HOME=$(pwd)/apache-jmeter-5.6.3" > $GITHUB_ENV
 
       - name: Exécution des tests avec JMeter
-        uses: flood-io/action-jmeter@v1
-        with:
-            jmx-file: 'jmeter_tests/plan.jmx'
+        run: $JMETER_HOME/bin/jmeter -n -t tests/performance.jmx -l results.jtl
 
             
