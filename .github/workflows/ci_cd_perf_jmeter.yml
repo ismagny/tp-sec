@@ -33,11 +33,11 @@ jobs:
       - name: Lancement de l'application
         run: yarn start &
 
-      - name: Attente démarrage du serveur
-        uses: WyriHaximus/github-action-wait-for@v2
-        with:
-          target: http://localhost:3001
-          timeout: 60s
+    #   - name: Attente démarrage du serveur
+    #     uses: WyriHaximus/github-action-wait-for@v2
+    #     with:
+    #       target: http://localhost:3001
+    #       timeout: 60s
     
       - name: Configuration de Java
         uses: actions/setup-java@v4

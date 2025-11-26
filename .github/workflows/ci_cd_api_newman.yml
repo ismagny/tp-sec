@@ -34,11 +34,11 @@ jobs:
       - name: Lancement de l'application
         run: yarn start &
       
-      - name: Attente démarrage du serveur
-        uses: WyriHaximus/github-action-wait-for@v2
-        with:
-          target: http://localhost:3000
-          timeout: 60s
+      # - name: Attente démarrage du serveur
+      #   uses: WyriHaximus/github-action-wait-for@v2
+      #   with:
+      #     target: http://localhost:3000
+      #     timeout: 60s
         
       - name: Install Newman
         run: npm install -g newman
