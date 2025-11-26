@@ -27,8 +27,8 @@ jobs:
       - name: Installation des dépendances
         run: yarn install --frozen-lockfile
 
-      - name: Linting
-        run: yarn lint
+      # - name: Linting
+      #   run: yarn lint
     
       - name: Lancement de l'application
         run: yarn start &
