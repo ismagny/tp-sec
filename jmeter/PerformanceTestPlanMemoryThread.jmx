@@ -42,7 +42,7 @@
             </elementProp>
             <elementProp name="Referer" elementType="Header">
               <stringProp name="Header.name">Referer</stringProp>
-              <stringProp name="Header.value">http://localhost:8080/examples/servlets/index.html</stringProp>
+              <stringProp name="Header.value">http://localhost:3000/examples/servlets/index.html</stringProp>
             </elementProp>
             <elementProp name="DNT" elementType="Header">
               <stringProp name="Header.name">DNT</stringProp>
@@ -74,7 +74,7 @@
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
           <stringProp name="HTTPSampler.domain">${host}</stringProp>
-          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.port">3000</stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
@@ -223,7 +223,7 @@
                   </elementProp>
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">http://localhost:8080/examples/servlets/index.html</stringProp>
+                    <stringProp name="Header.value">http://localhost:3000/examples/servlets/index.html</stringProp>
                   </elementProp>
                   <elementProp name="DNT" elementType="Header">
                     <stringProp name="Header.name">DNT</stringProp>

@@ -46,6 +46,6 @@ jobs:
             echo "JMETER_HOME=$(pwd)/apache-jmeter-5.6.3" > $GITHUB_ENV
 
       - name: Exécution des tests avec JMeter
-        run: $JMETER_HOME/bin/jmeter -n -t PerformanceTestPlanMemoryThread.jmx -l results.jtl
+        run: $JMETER_HOME/bin/jmeter -n -t jmeter/PerformanceTestPlanMemoryThread.jmx -l results.jtl
 
             

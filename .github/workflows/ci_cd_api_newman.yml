@@ -38,7 +38,7 @@ jobs:
         run: npm install -g newman
 
       - name: Run Postman Collection
-        run: newman run rwa-api-collection.json -reporters cli,json -reporter-json-export results.json
+        run: newman run newman/rwa-api-collection.json -reporters cli,json -reporter-json-export results.json
 
       - name: Upload Resultats
         uses: actions/upload-artifact@v4
