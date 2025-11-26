@@ -1,0 +1,48 @@
+name: CI/CD Cypress Real World APP
+
+on:
+  push:
+    branches:
+      - ismail
+  pull_request:
+    branches:
+      - ismail
+
+jobs:
+  build-and-test:
+    name: Test + Analyse Securité via ZAP
+    runs-on: ubuntu-latest
+    env:
+      BASE_URL: http://localhost:3000
+
+    steps:
+      - name: Checkout du repos
+        uses: actions/checkout@v4
+
+      - name: Configuration de Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'yarn'
+
+      - name: Installation des dépendances
+        run: yarn install --frozen-lockfile
+
+      - name: Linting
+        run: yarn lint
+      
+      - name: Lancement de l'application
+        run: yarn start &
+
+      - name: Attendre lancement du serveur
+        uses: ietf-tools/wait-on@v1
+        with:
+            resources: http://localhost:3000
+            timeout: 60000
+
+      - name: Scan de sécurité ZAP
+        uses: zaproxy/action-baseline@v0.12.0
+        with:
+            target: 'http://localhost:3000'
+    
+    
