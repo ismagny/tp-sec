@@ -1,0 +1,55 @@
+name: CI/CD Cypress Real World APP
+
+on:
+  push:
+    branches:
+      - ismail
+  pull_request:
+    branches:
+      - ismail
+
+jobs:
+  build-and-test:
+    name: Test + Analyse (API )
+    runs-on: ubuntu-latest
+    env:
+      BASE_URL: http://localhost:3000
+
+    steps:
+      - name: Checkout du repos
+        uses: actions/checkout@v4
+
+      - name: Configuration de Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'yarn'
+
+      - name: Installation des dépendances
+        run: yarn install --frozen-lockfile
+
+      - name: Linting
+        run: yarn lint
+
+      - name: Audit de sécurité
+        run: yarn audit
+
+      - name: Lancement de l'application & Tests Cypress
+        uses: cypress-io/github-action@v6
+        with:
+          start: yarn dev
+          wait-on: http://localhost:3000
+          command: yarn cypress:run
+          spec: cypress/tests/**/*
+        env:
+          CYPRESS_BASE_URL: ${{ env.BASE_URL }}
+      
+      - name: Installation Newman
+        run: yarn install -g newman
+      
+      - name: Attendre lancement du serveur
+        run: sleep 5
+
+      - name: Exécution des tests API avec Newman
+        run: newman run "newman_tests/api_tests.json"
+      
